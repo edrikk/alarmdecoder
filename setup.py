@@ -14,7 +14,8 @@ if sys.version_info < (3,):
     extra_requirements.append('future>=0.14.3')
 
 setup(name='alarmdecoder',
-    version='1.13.12',
+    use_scm_version=True,
+    setup_requires=["setuptools_scm"],
     description='Python interface for the AlarmDecoder (AD2) family '
                 'of alarm devices which includes the AD2USB, AD2SERIAL and AD2PI.',
     long_description=readme(),
@@ -42,4 +43,7 @@ setup(name='alarmdecoder',
     tests_require=['nose', 'mock'],
     scripts=['bin/ad2-sslterm', 'bin/ad2-firmwareupload'],
     include_package_data=True,
-    zip_safe=False)
+    zip_safe=False,
+    options={
+        'bdist_wheel': {'universal': 1}
+    })
